@@ -1,4 +1,6 @@
 import MenuDrawer from "@/components/menuDrawer";
+import Image from "next/image";
+import Link from "next/link";
 
 const layoutCyna = ({ children }) => {
   return (
@@ -11,7 +13,15 @@ const layoutCyna = ({ children }) => {
           >
             Open drawer
           </label>
-          <div>Cyna Box</div>
+          <Link href="/" className="flex items-center btn btn-ghost">
+            <Image
+              src="/images/baby-yoda.png"
+              alt="logo cyna"
+              width={45}
+              height={45}
+            />
+            <span className="normal-case text-xl">Cyna Box</span>
+          </Link>
         </div>
       </div>
       <div className="drawer lg:drawer-open  h-[calc(100vh-4rem)]">

@@ -1,11 +1,16 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const MenuDrawer = () => {
   const pathname = usePathname();
 
-  console.log(pathname);
+  const tools = [
+    { name: "Open VAS - Scan de vulnérabilité", url: "/openVas" },
+    { name: "Infection Monkey - BAS", url: "/infectionMonkey" },
+    { name: "BloodHound - Auditeur AD", url: "/bloodHound" },
+  ];
 
   return (
     <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
@@ -18,28 +23,30 @@ const MenuDrawer = () => {
         </Link>
       </li>
       <li className="mt-8">
-        <h2 className="menu-title text-lg">{"Outils d'attaque"}</h2>
+        <h2 className="menu-title text-lg">
+          <div className="flex gap-2">
+            <Image
+              src="/images/green_laser.png"
+              alt="laser saber"
+              width={80}
+              height={45}
+            />
+            <div>{"Outils d'attaque"}</div>
+          </div>
+        </h2>
         <ul>
-          <li>
-            <Link
-              className={`text-md font-bold ${
-                pathname == "/create" ? "active" : null
-              }`}
-              href={"/create"}
-            >
-              Outils1
-            </Link>
-          </li>
-          <li>
-            <Link
-              className={`text-md font-bold ${
-                pathname == "/machine" ? "active" : null
-              }`}
-              href={"/machine"}
-            >
-              Outils2
-            </Link>
-          </li>
+          {tools.map(({ name, url }, key) => (
+            <li key={key} className="my-4">
+              <Link
+                className={`text-md font-bold ${
+                  pathname == `/tools/${url}` ? "active" : null
+                }`}
+                href={`/tools/${url}`}
+              >
+                {name}
+              </Link>
+            </li>
+          ))}
         </ul>
       </li>
     </ul>
