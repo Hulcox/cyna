@@ -16,7 +16,7 @@ const MenuDrawer = () => {
     <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
       <li>
         <Link
-          className={`text-lg font-bold ${pathname == "/" ? "active" : null}`}
+          className={`text-lg font-bold ${pathname === "/" ? "active" : null}`}
           href={"/"}
         >
           Statistiques
@@ -39,7 +39,7 @@ const MenuDrawer = () => {
             <li key={key} className="my-4">
               <Link
                 className={`text-md font-bold ${
-                  pathname == `/tools/${url}` ? "active" : null
+                  pathname === `/tools/${url}` ? "active" : null
                 }`}
                 href={`/tools/${url}`}
               >
