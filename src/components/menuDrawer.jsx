@@ -7,12 +7,10 @@ const MenuDrawer = () => {
   const pathname = usePathname();
 
   const tools = [
-    { name: "Open VAS - Scan de vulnérabilité", url: "/openVas" },
-    { name: "Infection Monkey - BAS", url: "/infectionMonkey" },
-    { name: "BloodHound - Auditeur AD", url: "/bloodHound" },
+    { name: "Open VAS - Scan de vulnérabilité", url: "openVas" },
+    { name: "Infection Monkey - BAS", url: "infectionMonkey" },
+    { name: "BloodHound - Auditeur AD", url: "bloodHound" },
   ];
-
-  console.log(pathname);
 
   return (
     <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
