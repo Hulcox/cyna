@@ -1,3 +1,4 @@
+import IFrameInfectionMonkey from "@/components/iframeInfectionMonkey";
 import ToolsContainer from "@/components/toolsContainer";
 
 const ToolPage = ({ params }) => {
@@ -25,6 +26,7 @@ const ToolPage = ({ params }) => {
         .map(({ name, nameShort }, key) => (
           <ToolsContainer title={name} key={key} scriptName={nameShort} />
         ))}
+      {idTool == "infectionMonkey" && <IFrameInfectionMonkey />}
     </div>
   );
 };
