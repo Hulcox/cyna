@@ -23,7 +23,7 @@ const ToolPage = ({ params }) => {
       {tools
         .filter((elm) => elm.nameShort == idTool)
         .map(({ name, nameShort }, key) => (
-          <ToolsContainer title={name} key={key} scriptName={nameShort} />
+          <ToolsContainer title={name} key={key} scriptName={nameShort}/>
         ))}
     </div>
   );
