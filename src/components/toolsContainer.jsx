@@ -1,14 +1,20 @@
-"use client";
-import { useCallback, useContext, useEffect, useState } from "react";
-import Table from "@/components/table";
-import AppContext from "./appContext";
-import { request } from "./tools/requester/requestHandler";
-import { Formik, Form, Field } from "formik";
+"use client"
+import { useCallback, useContext, useEffect, useState } from "react"
+import Table from "@/components/table"
+import AppContext from "./appContext"
+import { request } from "./tools/requester/requestHandler"
+import { Formik, Form, Field } from "formik"
 
 const ToolsContainer = ({ title, scriptName }) => {
-  const [stringIsRunning, setStringIsRunning] = useState("");
-  const [data, setData] = useState(null);
-  const { scriptIsBusy, handleSetScriptIsBusy } = useContext(AppContext);
+  const [data, setData] = useState(null)
+  const [stringIsRunning, setStringIsRunning] = useState("")
+  const { scriptIsBusy, handleSetScriptIsBusy } = useContext(AppContext)
+  const [isAnyRunning, setIsAnyRunning] = useState(false)
+
+  useEffect(() => {
+    const isAnyRunning = Object.values(scriptIsBusy).filter(script => script.status === "running")
+    setIsAnyRunning(isAnyRunning)
+  }, [scriptIsBusy])
 
   const columns = [
     "IP",
@@ -16,8 +22,8 @@ const ToolsContainer = ({ title, scriptName }) => {
     "CVEs",
     "CVSS",
     "Severity",
-    "Specific Result",
-  ];
+    "Specific Result"
+  ]
 
   // const ToolSchema = Yup.object().shape({
   //   command: Yup.string().required("Une commande est requis !"),
@@ -25,52 +31,53 @@ const ToolsContainer = ({ title, scriptName }) => {
   // });
 
   const handleStartScript = useCallback(() => {
-    handleSetScriptIsBusy(scriptName);
+    handleSetScriptIsBusy(scriptName)
     request
       .post("/run", { container: scriptName, command: "", params: "" })
-      .then((res) => {})
+      .then((res) => {
+      })
       .catch((err) => {
-        console.log(err);
-      });
-  }, [handleSetScriptIsBusy, scriptName]);
+        console.log(err)
+      })
+  }, [handleSetScriptIsBusy, scriptName])
 
   useEffect(() => {
-    if (scriptIsBusy[scriptName].status == "running") {
-      let string = "";
+    if (scriptIsBusy[scriptName].status === "running") {
+      let string = ""
       const updateString = () => {
         if (string.length === 3) {
-          string = "";
+          string = ""
         } else {
-          string += ".";
+          string += "."
         }
-        setStringIsRunning(string);
-      };
+        setStringIsRunning(string)
+      }
 
-      const interval = setInterval(updateString, 1000);
+      const interval = setInterval(updateString, 1000)
 
       return () => {
-        clearInterval(interval);
-      };
+        clearInterval(interval)
+      }
     } else {
-      setStringIsRunning("");
+      setStringIsRunning("")
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scriptIsBusy]);
+  }, [scriptIsBusy])
 
   useEffect(() => {
     fetch(`/docs/${scriptName}.json`)
       .then((response) => response.json())
       .then((info) => {
-        setData(info);
+        setData(info)
       })
       .catch((error) => {
         console.error(
           "Une erreur s'est produite lors du chargement du fichier JSON :",
           error
-        );
-      });
+        )
+      })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   return (
     <div className="flex gap-5 flex-col w-full bg-base-100 rounded-lg p-4">
@@ -81,12 +88,12 @@ const ToolsContainer = ({ title, scriptName }) => {
         <pre data-prefix=">">
           <code>Exécution du script : </code>
         </pre>
-        {scriptIsBusy[scriptName].status == "running" && (
+        {scriptIsBusy[scriptName].status === "running" && (
           <pre data-prefix=">" className="text-warning">
             <code>{`En cours d'exécution ${stringIsRunning}`}</code>
           </pre>
         )}
-        {scriptIsBusy[scriptName].status == "done" && (
+        {scriptIsBusy[scriptName].status === "done" && (
           <pre data-prefix=">" className="text-success">
             <code>Fait ! le {scriptIsBusy[scriptName].date}</code>
           </pre>
@@ -96,7 +103,7 @@ const ToolsContainer = ({ title, scriptName }) => {
         <Formik
           initialValues={{
             command: "",
-            params: "",
+            params: ""
           }}
           onSubmit={handleStartScript}
         >
@@ -117,7 +124,7 @@ const ToolsContainer = ({ title, scriptName }) => {
               <button
                 type="submit"
                 className="btn bg-[#45781e] w-42 self-end text-white"
-                disabled={scriptIsBusy[scriptName].status == "running"}
+                disabled={isAnyRunning}
               >
                 Lancer le test
               </button>
@@ -125,9 +132,9 @@ const ToolsContainer = ({ title, scriptName }) => {
           )}
         </Formik>
       </div>
-      {data && <Table columns={columns} data={data} />}
+      {data && <Table columns={columns} data={data}/>}
     </div>
-  );
-};
+  )
+}
 
-export default ToolsContainer;
+export default ToolsContainer

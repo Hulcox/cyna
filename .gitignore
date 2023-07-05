@@ -30,6 +30,9 @@ yarn-error.log*
 # docs
 /public/docs/*
 
+# jetbrains users
+.idea
+
 # vercel
 .vercel
 
