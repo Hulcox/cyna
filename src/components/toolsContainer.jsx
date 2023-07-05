@@ -52,7 +52,7 @@ const ToolsContainer = ({ title, scriptName }) => {
   }, [handleSetScriptIsBusy, scriptName]);
 
   useEffect(() => {
-    if (scriptIsRunning) {
+    if (scriptIsRunning && scriptIsBusy) {
       let string = "";
       const updateString = () => {
         if (string.length === 3) {
@@ -72,7 +72,7 @@ const ToolsContainer = ({ title, scriptName }) => {
       setStringIsRunning("");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scriptIsRunning]);
+  }, [scriptIsRunning, scriptIsBusy]);
 
   console.log(scriptIsBusy);
 

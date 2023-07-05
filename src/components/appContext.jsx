@@ -1,5 +1,6 @@
 "use client";
 import { createContext, useCallback, useEffect, useState } from "react";
+import { request } from "./tools/requester/requestHandler";
 
 const AppContext = createContext({});
 
@@ -15,6 +16,30 @@ export const AppContextProvider = (props) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (scriptIsBusy) {
+      const updateRequest = () => {
+        request
+          .post("/alive", {
+            container: scriptIsBusy,
+          })
+          .then((res) => {
+            if (res.data != "up") {
+              handleSetScriptIsBusy(null);
+            }
+          })
+          .catch((err) => {});
+      };
+
+      const interval = setInterval(updateRequest, 1000);
+
+      return () => {
+        clearInterval(interval);
+      };
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [scriptIsBusy]);
 
   const handleSetScriptIsBusy = useCallback((value) => {
     setScriptIsBusy(value);
