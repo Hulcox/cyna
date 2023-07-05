@@ -1,6 +1,7 @@
 "use client";
 import { createContext, useCallback, useEffect, useState } from "react";
 import { request } from "./tools/requester/requestHandler";
+import { DateTime } from "luxon";
 
 const AppContext = createContext({});
 
@@ -9,10 +10,16 @@ export const AppContextProvider = (props) => {
     openVas: {
       name: "openVas",
       status: "down",
+      date: DateTime.now()
+        .setLocale("fr")
+        .toLocaleString(DateTime.DATETIME_SHORT),
     },
     infectionMonkey: {
       name: "infectionMonkey",
       status: "down",
+      date: DateTime.now()
+        .setLocale("fr")
+        .toLocaleString(DateTime.DATETIME_SHORT),
     },
   });
 
@@ -62,6 +69,9 @@ export const AppContextProvider = (props) => {
 
   const handleSetScriptIsDone = useCallback((value) => {
     scriptIsBusy[value].status = "done";
+    scriptIsBusy[value].date = DateTime.now()
+      .setLocale("fr")
+      .toLocaleString(DateTime.DATETIME_SHORT);
     setScriptIsBusy(scriptIsBusy);
     localStorage.setItem("localScriptIsBusy", JSON.stringify(scriptIsBusy));
     // eslint-disable-next-line react-hooks/exhaustive-deps

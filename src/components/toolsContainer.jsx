@@ -54,7 +54,8 @@ const ToolsContainer = ({ title, scriptName }) => {
     } else {
       setStringIsRunning("");
     }
-  }, [scriptIsBusy, scriptName]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [scriptIsBusy]);
 
   useEffect(() => {
     fetch(`/docs/${scriptName}.json`)
@@ -68,6 +69,7 @@ const ToolsContainer = ({ title, scriptName }) => {
           error
         );
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -79,14 +81,14 @@ const ToolsContainer = ({ title, scriptName }) => {
         <pre data-prefix=">">
           <code>Exécution du script : </code>
         </pre>
-        {scriptIsBusy === scriptName && (
+        {scriptIsBusy[scriptName].status == "running" && (
           <pre data-prefix=">" className="text-warning">
             <code>{`En cours d'exécution ${stringIsRunning}`}</code>
           </pre>
         )}
         {scriptIsBusy[scriptName].status == "done" && (
           <pre data-prefix=">" className="text-success">
-            <code>Fait !</code>
+            <code>Fait ! le {scriptIsBusy[scriptName].date}</code>
           </pre>
         )}
       </div>
@@ -115,7 +117,7 @@ const ToolsContainer = ({ title, scriptName }) => {
               <button
                 type="submit"
                 className="btn bg-[#45781e] w-42 self-end text-white"
-                // disabled={scriptIsBusy}
+                disabled={scriptIsBusy[scriptName].status == "running"}
               >
                 Lancer le test
               </button>
