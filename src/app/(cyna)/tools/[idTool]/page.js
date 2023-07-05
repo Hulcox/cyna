@@ -1,4 +1,3 @@
-import IFrameInfectionMonkey from "@/components/iframeInfectionMonkey";
 import ToolsContainer from "@/components/toolsContainer";
 
 const ToolPage = ({ params }) => {
@@ -13,10 +12,6 @@ const ToolPage = ({ params }) => {
       name: "Infection Monkey - BAS",
       nameShort: "infectionMonkey",
     },
-    {
-      name: "BloodHound - Auditeur AD",
-      nameShort: "bloodHound",
-    },
   ];
 
   return (
@@ -24,9 +19,8 @@ const ToolPage = ({ params }) => {
       {tools
         .filter((elm) => elm.nameShort == idTool)
         .map(({ name, nameShort }, key) => (
-          <ToolsContainer title={name} key={key} scriptName={nameShort}/>
+          <ToolsContainer title={name} key={key} scriptName={nameShort} />
         ))}
-      {idTool == "infectionMonkey" && <IFrameInfectionMonkey />}
     </div>
   );
 };

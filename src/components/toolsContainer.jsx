@@ -1,15 +1,15 @@
-"use client"
-import { useCallback, useContext, useEffect, useState } from "react"
-import Table from "@/components/table"
-import AppContext from "./appContext"
-import { request } from "./tools/requester/requestHandler"
-import { Formik, Form, Field } from "formik"
+"use client";
+import { useCallback, useContext, useEffect, useState } from "react";
+import Table from "@/components/table";
+import AppContext from "./appContext";
+import { request } from "./tools/requester/requestHandler";
+import { Formik, Form, Field } from "formik";
 
 const ToolsContainer = ({ title, scriptName }) => {
-  const [stringIsRunning, setStringIsRunning] = useState("")
-  const { scriptIsBusy, handleSetScriptIsBusy } = useContext(AppContext)
+  const [stringIsRunning, setStringIsRunning] = useState("");
+  const { scriptIsBusy, handleSetScriptIsBusy } = useContext(AppContext);
 
-  const columns = ["Port", "State", "Service", "Product"]
+  const columns = ["Port", "State", "Service", "Product"];
   const data = [
     {
       Port: "53",
@@ -19,7 +19,7 @@ const ToolsContainer = ({ title, scriptName }) => {
       "Reason TTL": "127",
       Service: "domain",
       Product: "Simple DNS Plus",
-      OSType: "Windows"
+      OSType: "Windows",
     },
     {
       Port: "88",
@@ -29,9 +29,9 @@ const ToolsContainer = ({ title, scriptName }) => {
       "Reason TTL": "127",
       Service: "kerberos-sec",
       Product: "Microsoft Windows Kerberos",
-      OSType: "Windows"
-    }
-  ]
+      OSType: "Windows",
+    },
+  ];
 
   // const ToolSchema = Yup.object().shape({
   //   command: Yup.string().required("Une commande est requis !"),
@@ -39,37 +39,36 @@ const ToolsContainer = ({ title, scriptName }) => {
   // });
 
   const handleStartScript = useCallback(() => {
-    handleSetScriptIsBusy(scriptName)
+    handleSetScriptIsBusy(scriptName);
     request
       .post("/run", { container: scriptName, command: "", params: "" })
-      .then((res) => {
-      })
+      .then((res) => {})
       .catch((err) => {
-        console.log(err)
-      })
-  }, [handleSetScriptIsBusy, scriptName])
+        console.log(err);
+      });
+  }, [handleSetScriptIsBusy, scriptName]);
 
   useEffect(() => {
-    if (scriptIsBusy) {
-      let string = ""
+    if (scriptIsBusy[scriptName].status == "running") {
+      let string = "";
       const updateString = () => {
         if (string.length === 3) {
-          string = ""
+          string = "";
         } else {
-          string += "."
+          string += ".";
         }
-        setStringIsRunning(string)
-      }
+        setStringIsRunning(string);
+      };
 
-      const interval = setInterval(updateString, 1000)
+      const interval = setInterval(updateString, 1000);
 
       return () => {
-        clearInterval(interval)
-      }
+        clearInterval(interval);
+      };
     } else {
-      setStringIsRunning("")
+      setStringIsRunning("");
     }
-  }, [scriptIsBusy])
+  }, [scriptIsBusy, scriptName]);
 
   return (
     <div className="flex gap-5 flex-col w-full bg-base-100 rounded-lg p-4">
@@ -85,17 +84,17 @@ const ToolsContainer = ({ title, scriptName }) => {
             <code>{`En cours d'exécution ${stringIsRunning}`}</code>
           </pre>
         )}
-        {/* {scriptIsFinished && (
+        {scriptIsBusy[scriptName].status == "done" && (
           <pre data-prefix=">" className="text-success">
-            <code>Fini!</code>
+            <code>Fait !</code>
           </pre>
-        )} */}
+        )}
       </div>
       <div className="flex gap-2 justify-end">
         <Formik
           initialValues={{
             command: "",
-            params: ""
+            params: "",
           }}
           onSubmit={handleStartScript}
         >
@@ -116,7 +115,7 @@ const ToolsContainer = ({ title, scriptName }) => {
               <button
                 type="submit"
                 className="btn bg-[#45781e] w-42 self-end text-white"
-                disabled={scriptIsBusy}
+                // disabled={scriptIsBusy}
               >
                 Lancer le test
               </button>
@@ -124,9 +123,9 @@ const ToolsContainer = ({ title, scriptName }) => {
           )}
         </Formik>
       </div>
-      {data && <Table columns={columns} data={data}/>}
+      {data && <Table columns={columns} data={data} />}
     </div>
-  )
-}
+  );
+};
 
-export default ToolsContainer
+export default ToolsContainer;

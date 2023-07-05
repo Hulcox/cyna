@@ -5,45 +5,66 @@ import { request } from "./tools/requester/requestHandler";
 const AppContext = createContext({});
 
 export const AppContextProvider = (props) => {
-  const [scriptIsBusy, setScriptIsBusy] = useState(null);
+  const [scriptIsBusy, setScriptIsBusy] = useState({
+    openVas: {
+      name: "openVas",
+      status: "down",
+    },
+    infectionMonkey: {
+      name: "infectionMonkey",
+      status: "down",
+    },
+  });
 
   useEffect(() => {
     const localScriptIsBusy = localStorage.getItem("localScriptIsBusy");
     if (localScriptIsBusy) {
-      setScriptIsBusy(localScriptIsBusy);
+      setScriptIsBusy(JSON.parse(localScriptIsBusy));
     } else {
-      localStorage.setItem("localScriptIsBusy", scriptIsBusy);
+      localStorage.setItem("localScriptIsBusy", JSON.stringify(scriptIsBusy));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    if (scriptIsBusy) {
-      const updateRequest = () => {
-        request
-          .post("/alive", {
-            container: scriptIsBusy,
-          })
-          .then((res) => {
-            if (res.data != "up") {
-              handleSetScriptIsBusy(null);
-            }
-          })
-          .catch((err) => {});
-      };
+    const updateRequest = () => {
+      Object.values(scriptIsBusy)
+        .filter(({ status }) => status == "running")
+        .map(({ name }) => {
+          request
+            .post("/alive", {
+              container: name,
+            })
+            .then((res) => {
+              if (res.data != "up") {
+                handleSetScriptIsDone(name);
+              }
+            })
+            .catch((err) => {});
+        });
+    };
+    console.log(scriptIsBusy);
+    const interval = setInterval(updateRequest, 1000);
 
-      const interval = setInterval(updateRequest, 1000);
+    return () => {
+      clearInterval(interval);
+    };
 
-      return () => {
-        clearInterval(interval);
-      };
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scriptIsBusy]);
 
   const handleSetScriptIsBusy = useCallback((value) => {
-    setScriptIsBusy(value);
-    localStorage.setItem("localScriptIsBusy", value);
+    scriptIsBusy[value].status = "running";
+    setScriptIsBusy(scriptIsBusy);
+    localStorage.setItem("localScriptIsBusy", JSON.stringify(scriptIsBusy));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleSetScriptIsDone = useCallback((value) => {
+    scriptIsBusy[value].status = "done";
+    setScriptIsBusy(scriptIsBusy);
+    localStorage.setItem("localScriptIsBusy", JSON.stringify(scriptIsBusy));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
