@@ -7,31 +7,10 @@ import { Formik, Form, Field } from "formik"
 
 const ToolsContainer = ({ title, scriptName }) => {
   const [stringIsRunning, setStringIsRunning] = useState("")
+  const [data, setData] = useState(null)
   const { scriptIsBusy, handleSetScriptIsBusy } = useContext(AppContext)
 
-  const columns = ["Port", "State", "Service", "Product"]
-  const data = [
-    {
-      Port: "53",
-      Protocol: "tcp",
-      State: "open",
-      Reason: "syn-ack",
-      "Reason TTL": "127",
-      Service: "domain",
-      Product: "Simple DNS Plus",
-      OSType: "Windows"
-    },
-    {
-      Port: "88",
-      Protocol: "tcp",
-      State: "open",
-      Reason: "syn-ack",
-      "Reason TTL": "127",
-      Service: "kerberos-sec",
-      Product: "Microsoft Windows Kerberos",
-      OSType: "Windows"
-    }
-  ]
+  const columns = ["IP", "Hostname", "CVEs", "CVSS", "Severity", "Specific Result"]
 
   // const ToolSchema = Yup.object().shape({
   //   command: Yup.string().required("Une commande est requis !"),
@@ -70,6 +49,17 @@ const ToolsContainer = ({ title, scriptName }) => {
       setStringIsRunning("")
     }
   }, [scriptIsBusy])
+
+  useEffect(() => {
+    fetch(`/docs/${scriptName}.json`)
+      .then(response => response.json())
+      .then(info => {
+        setData(info)
+      })
+      .catch(error => {
+        console.error("Une erreur s'est produite lors du chargement du fichier JSON :", error)
+      })
+  }, [])
 
   return (
     <div className="flex gap-5 flex-col w-full bg-base-100 rounded-lg p-4">

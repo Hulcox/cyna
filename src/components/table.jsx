@@ -17,7 +17,7 @@ const Table = (props) => {
             <tr key={key}>
               <td className="font-bold">{key + 1}</td>
               {columns.map((column, i) => (
-                <td key={i}>{row[column]}</td>
+                <td key={i}>{row[column] || "-"}</td>
               ))}
             </tr>
           ))}

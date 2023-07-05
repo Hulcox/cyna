@@ -1,16 +1,15 @@
-"use client";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+"use client"
+import Image from "next/image"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 const MenuDrawer = () => {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   const tools = [
     { name: "Open VAS - Scan de vulnérabilité", url: "openVas" },
-    { name: "Infection Monkey - BAS", url: "infectionMonkey" },
-    { name: "BloodHound - Auditeur AD", url: "bloodHound" },
-  ];
+    { name: "Infection Monkey - BAS", url: "infectionMonkey" }
+  ]
 
   return (
     <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
@@ -50,7 +49,7 @@ const MenuDrawer = () => {
         </ul>
       </li>
     </ul>
-  );
-};
+  )
+}
 
-export default MenuDrawer;
+export default MenuDrawer
