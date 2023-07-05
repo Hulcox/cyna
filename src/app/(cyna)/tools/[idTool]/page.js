@@ -7,17 +7,14 @@ const ToolPage = ({ params }) => {
     {
       name: "Open VAS - Scan de vulnérabilité",
       nameShort: "openVas",
-      scriptUrl: "",
     },
     {
       name: "Infection Monkey - BAS",
       nameShort: "infectionMonkey",
-      scriptUrl: "",
     },
     {
       name: "BloodHound - Auditeur AD",
       nameShort: "bloodHound",
-      scriptUrl: "",
     },
   ];
 
@@ -25,8 +22,8 @@ const ToolPage = ({ params }) => {
     <div className=" p-4">
       {tools
         .filter((elm) => elm.nameShort == idTool)
-        .map(({ name, scriptUrl }, key) => (
-          <ToolsContainer title={name} key={key} />
+        .map(({ name, nameShort }, key) => (
+          <ToolsContainer title={name} key={key} scriptName={nameShort} />
         ))}
     </div>
   );
