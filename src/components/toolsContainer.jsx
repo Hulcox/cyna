@@ -110,22 +110,12 @@ const ToolsContainer = ({ title, scriptName }) => {
                 <Field
                   name="command"
                   placeholder="Commande"
-                  bordererror={errors.command}
-                  className={`input w-1/3 ${
-                    errors.command && touched.command
-                      ? "input-error"
-                      : "border-[#45781e]"
-                  } `}
+                  className="input w-1/3 border-[#45781e]"
                 />
                 <Field
                   name="params"
                   placeholder="Paramètres"
-                  bordererror={errors.params}
-                  className={`input w-1/3 ${
-                    errors.params && touched.params
-                      ? "input-error"
-                      : "border-[#45781e]"
-                  } `}
+                  className="input w-1/3 border-[#45781e]"
                 />
               </div>
               <button
