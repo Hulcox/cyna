@@ -42,6 +42,7 @@ const MenuDrawer = () => {
               alt="laser saber"
               width={80}
               height={45}
+              className={"object-scale-down"}
             />
             <div>{"Reconnaissance"}</div>
           </div>
@@ -66,6 +67,7 @@ const MenuDrawer = () => {
               alt="laser saber"
               width={80}
               height={45}
+              className={"object-scale-down"}
             />
             <div>{"Simulation Ransomware"}</div>
           </div>
