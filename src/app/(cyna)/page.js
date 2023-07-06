@@ -1,19 +1,39 @@
-export default function Home() {
-  return (
-    <div className="p-8">
-      <div className="stats shadow">
-        <div className="stat">
-          <div className="stat-title">Attaques réussies</div>
-          <div className="stat-value">10</div>
-          <div className="stat-desc">25 %</div>
-        </div>
+"use client"
+import React, { useEffect, useState } from "react"
+import BarChart from "@/components/barChart"
+import NoData from "@/components/noData"
 
-        <div className="stat">
-          <div className="stat-title">Attaques échouées</div>
-          <div className="stat-value">20</div>
-          <div className="stat-desc">75 %</div>
-        </div>
-      </div>
+export default function Home() {
+  const [data, setData] = useState([])
+
+  const files = [
+    "ip_par_cve_data",
+    "ip_par_severity_data",
+    "severity_par_cve_data"
+  ]
+
+  useEffect(() => {
+    files.map((file) => {
+      fetch(`/stats/${file}.json`)
+        .then((response) => response.json())
+        .then((info) => {
+          const name = file.split("_").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")
+          const unit = { name, ...info }
+          setData((prev) => [...prev, unit])
+        })
+        .catch((error) => {
+          console.log(`Une erreur s'est produite lors du chargement du fichier JSON : ${error.message}`)
+        })
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  return (
+    <div className="p-10 grid lg:grid-cols-2">
+      {data && data.map((info, index) => (
+        <BarChart key={index} info={info}/>
+      ))}
+      {data.length === 0 && <NoData/>}
     </div>
-  );
+  )
 }

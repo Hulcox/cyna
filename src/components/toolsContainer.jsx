@@ -4,7 +4,6 @@ import Table from "@/components/table";
 import AppContext from "./appContext";
 import { request } from "./tools/requester/requestHandler";
 import { Formik, Form, Field } from "formik";
-import { bool } from "yup";
 
 const ToolsContainer = ({ title, scriptName }) => {
   const [data, setData] = useState(null);
@@ -26,6 +25,7 @@ const ToolsContainer = ({ title, scriptName }) => {
     "CVEs",
     "CVSS",
     "Severity",
+    "Cyberscore",
     "Specific Result",
   ];
 

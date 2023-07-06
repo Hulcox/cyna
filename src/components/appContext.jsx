@@ -14,8 +14,8 @@ export const AppContextProvider = (props) => {
         .setLocale("fr")
         .toLocaleString(DateTime.DATETIME_SHORT),
     },
-    infectionMonkey: {
-      name: "infectionMonkey",
+    infectionmonkey: {
+      name: "infectionmonkey",
       status: "down",
       date: DateTime.now()
         .setLocale("fr")
@@ -57,7 +57,6 @@ export const AppContextProvider = (props) => {
             .catch((err) => {});
         });
     };
-    console.log(scriptIsBusy);
     const interval = setInterval(updateRequest, 1000);
 
     return () => {

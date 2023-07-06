@@ -16,11 +16,11 @@ const layoutCyna = ({ children }) => {
           <Link href="/" className="flex items-center btn btn-ghost">
             <Image
               src="/images/baby_yoda.png"
-              alt="logo cyna"
+              alt="yoda"
               width={45}
               height={45}
             />
-            <span className="normal-case text-xl">Cyna Box</span>
+            <span className="normal-case text-xl">Mirador</span>
           </Link>
         </div>
       </div>

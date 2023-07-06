@@ -10,7 +10,7 @@ const ToolPage = ({ params }) => {
     },
     {
       name: "Infection Monkey - BAS",
-      nameShort: "infectionMonkey",
+      nameShort: "infectionmonkey",
     },
     {
       name: "Metasplot - Recherche d'information sur les CVE trouvées",
