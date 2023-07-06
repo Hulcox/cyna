@@ -40,31 +40,31 @@ export const AppContextProvider = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    const updateRequest = () => {
-      Object.values(scriptIsBusy)
-        .filter(({ status }) => status === "running")
-        .map(({ name }) => {
-          request
-            .post("/alive", {
-              container: name,
-            })
-            .then((res) => {
-              if (res.data !== "up") {
-                handleSetScriptIsDone(name);
-              }
-            })
-            .catch((err) => {});
-        });
-    };
-    const interval = setInterval(updateRequest, 1000);
+  // useEffect(() => {
+  //   const updateRequest = () => {
+  //     Object.values(scriptIsBusy)
+  //       .filter(({ status }) => status === "running")
+  //       .map(({ name }) => {
+  //         request
+  //           .post("/alive", {
+  //             container: name,
+  //           })
+  //           .then((res) => {
+  //             if (res.data !== "up") {
+  //               handleSetScriptIsDone(name);
+  //             }
+  //           })
+  //           .catch((err) => {});
+  //       });
+  //   };
+  //   const interval = setInterval(updateRequest, 1000);
 
-    return () => {
-      clearInterval(interval);
-    };
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scriptIsBusy]);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [scriptIsBusy]);
 
   const handleSetScriptIsBusy = useCallback((value) => {
     scriptIsBusy[value].status = "running";
@@ -89,6 +89,7 @@ export const AppContextProvider = (props) => {
       value={{
         scriptIsBusy,
         handleSetScriptIsBusy,
+        handleSetScriptIsDone,
       }}
     />
   );

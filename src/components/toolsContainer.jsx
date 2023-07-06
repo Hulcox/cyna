@@ -9,7 +9,8 @@ import Link from "next/link";
 const ToolsContainer = ({ title, scriptName }) => {
   const [data, setData] = useState(null);
   const [stringIsRunning, setStringIsRunning] = useState("");
-  const { scriptIsBusy, handleSetScriptIsBusy } = useContext(AppContext);
+  const { scriptIsBusy, handleSetScriptIsBusy, handleSetScriptIsDone } =
+    useContext(AppContext);
   const [isAnyRunning, setIsAnyRunning] = useState(false);
 
   useEffect(() => {
@@ -40,11 +41,16 @@ const ToolsContainer = ({ title, scriptName }) => {
       console.log(value);
       handleSetScriptIsBusy(scriptName);
 
-      const run = await request.post("/run", {
-        container: scriptName,
-        command: value.command,
-        params: value.params,
-      });
+      // const run = await request.post("/run", {
+      //   container: scriptName,
+      //   command: value.command,
+      //   params: value.params,
+      // });
+
+      setTimeout(() => {
+        console.log("COUCOU");
+        handleSetScriptIsDone(scriptName);
+      }, 5000);
 
       console.log(run);
     },
