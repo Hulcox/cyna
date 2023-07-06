@@ -41,13 +41,14 @@ const ToolsContainer = ({ title, scriptName }) => {
 
       const run = await request.post("/run", {
         container: scriptName,
-        command: "",
-        params: "",
+        command: value.command,
+        params: value.params,
       });
 
       console.log(run);
     },
-    [handleSetScriptIsBusy, scriptName]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
   );
 
   useEffect(() => {
