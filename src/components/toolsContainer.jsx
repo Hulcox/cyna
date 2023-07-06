@@ -4,6 +4,7 @@ import Table from "@/components/table";
 import AppContext from "./appContext";
 import { request } from "./tools/requester/requestHandler";
 import { Formik, Form, Field } from "formik";
+import Link from "next/link";
 
 const ToolsContainer = ({ title, scriptName }) => {
   const [data, setData] = useState(null);
@@ -94,6 +95,7 @@ const ToolsContainer = ({ title, scriptName }) => {
       <h2 className="text-2xl font-bold flex justify-center items-center m-4">
         {title}
       </h2>
+
       <div className="mockup-code">
         <pre data-prefix=">">
           <code>Exécution du script : </code>
@@ -108,6 +110,19 @@ const ToolsContainer = ({ title, scriptName }) => {
             <code>Fait ! le {scriptIsBusy[scriptName].date}</code>
           </pre>
         )}
+        {scriptName === "infectionmonkey" &&
+          scriptIsBusy[scriptName].status === "done" && (
+            <pre data-prefix=">" className="text-info">
+              <code>
+                <Link
+                  href={"https://localhost:5000"}
+                  className="link link-info"
+                >
+                  Accéder au simulateur de brèche
+                </Link>
+              </code>
+            </pre>
+          )}
       </div>
       <div className="flex gap-2 justify-end">
         <Formik
