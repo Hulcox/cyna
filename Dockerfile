@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Installer les dépendances
-RUN npm install
+RUN npm install --ignore-fund --audit false
 
 # Exposer le port 3000
 EXPOSE 3000
