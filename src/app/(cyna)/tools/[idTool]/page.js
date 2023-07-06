@@ -1,32 +1,32 @@
-import ToolsContainer from "@/components/toolsContainer";
+import ToolsContainer from "@/components/toolsContainer"
 
 const ToolPage = ({ params }) => {
-  const { idTool } = params;
+  const { idTool } = params
 
   const tools = [
     {
       name: "Scan de vulnérabilité",
-      nameShort: "openvas",
+      nameShort: "openvas"
     },
     {
       name: "Simulation de brèche",
-      nameShort: "infectionmonkey",
+      nameShort: "infectionmonkey"
     },
     {
       name: "Vunérabilité - Recherche d'information sur les CVE",
-      nameShort: "metasploit",
-    },
-  ];
+      nameShort: "metasploit"
+    }
+  ]
 
   return (
     <div className=" p-4">
       {tools
         .filter((elm) => elm.nameShort === idTool)
         .map(({ name, nameShort }, key) => (
-          <ToolsContainer title={name} key={key} scriptName={nameShort} />
+          <ToolsContainer title={name} key={key} scriptName={nameShort}/>
         ))}
     </div>
-  );
-};
+  )
+}
 
-export default ToolPage;
+export default ToolPage

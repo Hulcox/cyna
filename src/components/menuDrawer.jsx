@@ -1,25 +1,31 @@
-"use client";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+"use client"
+import Image from "next/image"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 const MenuDrawer = () => {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   const tools = [
     {
       name: "Scan de vulnérabilité",
-      url: "/tools/openvas",
-    },
+      url: "/tools/openvas"
+    }
     // {
     //   name: "Simulation de brèche",
     //   url: "/tools/infectionmonkey",
     // },
-    {
-      name: "Exploitation de Vunérabilité",
-      url: "/tools/metasploit",
-    },
-  ];
+    // {
+    //   name: "Exploitation de Vunérabilité",
+    //   url: "/tools/metasploit"
+    // }
+  ]
+
+  const results = [
+    { name: "Statistiques", url: "/" },
+    { name: "Schéma des risques cyber", url: "/schema" }
+    // { name: "Recommandations", url: "/recommandation" }
+  ]
 
   return (
     <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
@@ -60,25 +66,17 @@ const MenuDrawer = () => {
           </div>
         </h2>
         <ul>
-          <li className="my-4">
-            <Link className={`text-md font-bold`} href={"/"}>
-              Statistiques
-            </Link>
-          </li>
-          <li className="my-4">
-            <Link className={`text-md font-bold`} href={"/schema"}>
-              Schema des riques Cyber
-            </Link>
-          </li>
-          <li className="my-4">
-            <Link className={`text-md font-bold`} href={"/"}>
-              Recommandation
-            </Link>
-          </li>
+          {results.map(({ name, url }, key) => (
+            <li key={key} className="my-4">
+              <Link className={`text-md font-bold`} href={url}>
+                {name}
+              </Link>
+            </li>
+          ))}
         </ul>
       </li>
     </ul>
-  );
-};
+  )
+}
 
-export default MenuDrawer;
+export default MenuDrawer

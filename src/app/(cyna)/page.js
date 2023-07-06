@@ -7,9 +7,7 @@ export default function Home() {
   const [data, setData] = useState([])
 
   const files = [
-    "ip_par_cve_data",
-    "ip_par_severity_data",
-    "severity_par_cve_data"
+    "ip_par_severity_data"
   ]
 
   useEffect(() => {
@@ -29,9 +27,14 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="p-10 grid lg:grid-cols-2">
+    <div className="p-10 w-3/4">
       {data && data.map((info, index) => (
-        <BarChart key={index} info={info}/>
+        <>
+          <h1 className="font-bold uppercase text-xl">
+            Nos données actuelles
+          </h1>
+          <BarChart key={index} info={info}/>
+        </>
       ))}
       {data.length === 0 && <NoData/>}
     </div>

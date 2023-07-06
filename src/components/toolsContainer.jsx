@@ -1,35 +1,33 @@
-"use client";
-import { useCallback, useContext, useEffect, useState } from "react";
-import Table from "@/components/table";
-import AppContext from "./appContext";
-import { request } from "./tools/requester/requestHandler";
-import { Formik, Form, Field } from "formik";
-import Link from "next/link";
+"use client"
+import { useCallback, useContext, useEffect, useState } from "react"
+import Table from "@/components/table"
+import AppContext from "./appContext"
+import { Formik, Form, Field } from "formik"
+import Link from "next/link"
 
 const ToolsContainer = ({ title, scriptName }) => {
-  const [data, setData] = useState(null);
-  const [stringIsRunning, setStringIsRunning] = useState("");
+  const [data, setData] = useState(null)
+  const [stringIsRunning, setStringIsRunning] = useState("")
   const { scriptIsBusy, handleSetScriptIsBusy, handleSetScriptIsDone } =
-    useContext(AppContext);
-  const [isAnyRunning, setIsAnyRunning] = useState(false);
+    useContext(AppContext)
+  const [isAnyRunning, setIsAnyRunning] = useState(false)
 
   useEffect(() => {
     const isAnyRunning =
       Object.values(scriptIsBusy).filter(
         (script) => script.status === "running"
-      ).length > 0;
-    setIsAnyRunning(isAnyRunning);
-  }, [scriptIsBusy]);
+      ).length > 0
+    setIsAnyRunning(isAnyRunning)
+  }, [scriptIsBusy])
 
   const columns = [
     "IP",
-    "Hostname",
     "CVEs",
     "CVSS",
     "Severity",
     "Cyberscore",
-    "Specific Result",
-  ];
+    "Specific Result"
+  ]
 
   // const ToolSchema = Yup.object().shape({
   //   command: Yup.string().required("Une commande est requis !"),
@@ -38,8 +36,8 @@ const ToolsContainer = ({ title, scriptName }) => {
 
   const handleStartScript = useCallback(
     async (value) => {
-      console.log(value);
-      handleSetScriptIsBusy(scriptName);
+      console.log(value)
+      handleSetScriptIsBusy(scriptName)
 
       // const run = await request.post("/run", {
       //   container: scriptName,
@@ -48,53 +46,51 @@ const ToolsContainer = ({ title, scriptName }) => {
       // });
 
       setTimeout(() => {
-        console.log("COUCOU");
-        handleSetScriptIsDone(scriptName);
-      }, 5000);
+        handleSetScriptIsDone(scriptName)
+      }, 5000)
 
-      console.log(run);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
-  );
+  )
 
   useEffect(() => {
     if (scriptIsBusy[scriptName].status === "running") {
-      let string = "";
+      let string = ""
       const updateString = () => {
         if (string.length === 3) {
-          string = "";
+          string = ""
         } else {
-          string += ".";
+          string += "."
         }
-        setStringIsRunning(string);
-      };
+        setStringIsRunning(string)
+      }
 
-      const interval = setInterval(updateString, 1000);
+      const interval = setInterval(updateString, 1000)
 
       return () => {
-        clearInterval(interval);
-      };
+        clearInterval(interval)
+      }
     } else {
-      setStringIsRunning("");
+      setStringIsRunning("")
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scriptIsBusy]);
+  }, [scriptIsBusy])
 
   useEffect(() => {
     fetch(`/docs/${scriptName}.json`)
       .then((response) => response.json())
       .then((info) => {
-        setData(info);
+        setData(info)
       })
       .catch((error) => {
         console.error(
           "Une erreur s'est produite lors du chargement du fichier JSON :",
           error
-        );
-      });
+        )
+      })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   return (
     <div className="flex gap-5 flex-col w-full bg-base-100 rounded-lg p-4">
@@ -134,7 +130,7 @@ const ToolsContainer = ({ title, scriptName }) => {
         <Formik
           initialValues={{
             command: "",
-            params: "",
+            params: ""
           }}
           onSubmit={handleStartScript}
         >
@@ -163,9 +159,9 @@ const ToolsContainer = ({ title, scriptName }) => {
           )}
         </Formik>
       </div>
-      {data && <Table columns={columns} data={data} />}
+      {data && <Table columns={columns} data={data}/>}
     </div>
-  );
-};
+  )
+}
 
-export default ToolsContainer;
+export default ToolsContainer

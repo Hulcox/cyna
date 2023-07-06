@@ -1,5 +1,5 @@
 "use client"
-import React from "react";
+import React from "react"
 import {
   BarElement,
   CategoryScale,
@@ -10,7 +10,7 @@ import {
   Title,
   Tooltip
 } from "chart.js"
-import { Bar } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2"
 
 ChartJS.register(
   CategoryScale,
@@ -19,29 +19,29 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  Filler,
+  Filler
 )
 
 const BarChart = (props) => {
-  const { info } = props;
+  const { info } = props
 
   console.log(info)
 
   const data = {
     labels: info.labels,
-    datasets: info.datasets,
-  };
+    datasets: info.datasets
+  }
   const options = {
     responsive: true,
     maintainAspectRatio: true,
     plugins: {
       legend: {
-        position: "top",
+        position: "top"
       },
       title: {
         display: true,
-        text: info.name,
-      },
+        text: info.name
+      }
     }
   }
 
@@ -49,7 +49,7 @@ const BarChart = (props) => {
     <div>
       <Bar data={data} options={options}/>
     </div>
-  );
-};
+  )
+}
 
-export default BarChart;
+export default BarChart

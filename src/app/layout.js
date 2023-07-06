@@ -1,12 +1,12 @@
-import { AppContextProvider } from "@/components/appContext";
-import "./globals.css";
-import { Inter } from "next/font/google";
+import { AppContextProvider } from "@/components/appContext"
+import "./globals.css"
+import { Inter } from "next/font/google"
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "Cyna Box Mirador",
-};
+  title: "Cyna Box Mirador"
+}
 
 export default function RootLayout({ children }) {
   return (
@@ -15,5 +15,5 @@ export default function RootLayout({ children }) {
         <AppContextProvider>{children}</AppContextProvider>
       </body>
     </html>
-  );
+  )
 }

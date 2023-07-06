@@ -1,3 +1,5 @@
-const PageRecommandation = () => {};
+const PageRecommandation = () => {
+  // todo
+};
 
 export default PageRecommandation;

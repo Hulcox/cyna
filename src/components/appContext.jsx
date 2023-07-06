@@ -1,9 +1,9 @@
-"use client";
-import { createContext, useCallback, useEffect, useState } from "react";
-import { request } from "./tools/requester/requestHandler";
-import { DateTime } from "luxon";
+"use client"
+import { createContext, useCallback, useEffect, useState } from "react"
+import { request } from "./tools/requester/requestHandler"
+import { DateTime } from "luxon"
 
-const AppContext = createContext({});
+const AppContext = createContext({})
 
 export const AppContextProvider = (props) => {
   const [scriptIsBusy, setScriptIsBusy] = useState({
@@ -12,33 +12,33 @@ export const AppContextProvider = (props) => {
       status: "down",
       date: DateTime.now()
         .setLocale("fr")
-        .toLocaleString(DateTime.DATETIME_SHORT),
+        .toLocaleString(DateTime.DATETIME_SHORT)
     },
     infectionmonkey: {
       name: "infectionmonkey",
       status: "down",
       date: DateTime.now()
         .setLocale("fr")
-        .toLocaleString(DateTime.DATETIME_SHORT),
+        .toLocaleString(DateTime.DATETIME_SHORT)
     },
     metasploit: {
       name: "metasploit",
       status: "down",
       date: DateTime.now()
         .setLocale("fr")
-        .toLocaleString(DateTime.DATETIME_SHORT),
-    },
-  });
+        .toLocaleString(DateTime.DATETIME_SHORT)
+    }
+  })
 
   useEffect(() => {
-    const localScriptIsBusy = localStorage.getItem("localScriptIsBusy");
+    const localScriptIsBusy = localStorage.getItem("localScriptIsBusy")
     if (localScriptIsBusy) {
-      setScriptIsBusy(JSON.parse(localScriptIsBusy));
+      setScriptIsBusy(JSON.parse(localScriptIsBusy))
     } else {
-      localStorage.setItem("localScriptIsBusy", JSON.stringify(scriptIsBusy));
+      localStorage.setItem("localScriptIsBusy", JSON.stringify(scriptIsBusy))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   // useEffect(() => {
   //   const updateRequest = () => {
@@ -67,21 +67,21 @@ export const AppContextProvider = (props) => {
   // }, [scriptIsBusy]);
 
   const handleSetScriptIsBusy = useCallback((value) => {
-    scriptIsBusy[value].status = "running";
-    setScriptIsBusy(scriptIsBusy);
-    localStorage.setItem("localScriptIsBusy", JSON.stringify(scriptIsBusy));
+    scriptIsBusy[value].status = "running"
+    setScriptIsBusy(scriptIsBusy)
+    localStorage.setItem("localScriptIsBusy", JSON.stringify(scriptIsBusy))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   const handleSetScriptIsDone = useCallback((value) => {
-    scriptIsBusy[value].status = "done";
+    scriptIsBusy[value].status = "done"
     scriptIsBusy[value].date = DateTime.now()
       .setLocale("fr")
-      .toLocaleString(DateTime.DATETIME_SHORT);
-    setScriptIsBusy(scriptIsBusy);
-    localStorage.setItem("localScriptIsBusy", JSON.stringify(scriptIsBusy));
+      .toLocaleString(DateTime.DATETIME_SHORT)
+    setScriptIsBusy(scriptIsBusy)
+    localStorage.setItem("localScriptIsBusy", JSON.stringify(scriptIsBusy))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   return (
     <AppContext.Provider
@@ -89,10 +89,10 @@ export const AppContextProvider = (props) => {
       value={{
         scriptIsBusy,
         handleSetScriptIsBusy,
-        handleSetScriptIsDone,
+        handleSetScriptIsDone
       }}
     />
-  );
-};
+  )
+}
 
-export default AppContext;
+export default AppContext

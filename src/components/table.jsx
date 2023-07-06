@@ -10,6 +10,8 @@ const Table = (props) => {
     Info: "bg-blue-500"
   }
 
+  // todo: order by column in the table
+
   return (
     <div className="overflow-x-auto">
       <table className="table">

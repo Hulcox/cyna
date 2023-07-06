@@ -1,30 +1,30 @@
 {
   "labels": [
-    "Medium",
     "Info",
-    "Critical",
-    "High"
+    "Medium",
+    "High",
+    "Critical"
   ],
   "datasets": [
     {
       "label": "Nombre d'IP",
       "backgroundColor": [
-        "#facc15",
         "#3b82f6",
-        "#dc2626",
-        "#d97706"
+        "#facc15",
+        "#d97706",
+        "#dc2626"
       ],
       "borderColor": [
-        "#facc15",
         "#3b82f6",
-        "#dc2626",
-        "#d97706"
+        "#facc15",
+        "#d97706",
+        "#dc2626"
       ],
       "data": [
-        35,
         51,
-        4,
-        28
+        35,
+        28,
+        4
       ]
     }
   ]
