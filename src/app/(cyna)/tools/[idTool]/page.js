@@ -9,11 +9,7 @@ const ToolPage = ({ params }) => {
       nameShort: "openvas",
     },
     {
-      name: "Infection Monkey - BAS",
-      nameShort: "infectionMonkey",
-    },
-    {
-      name: "Metasplot - Recherche d'information sur les CVE trouvées",
+      name: "Metasploit - Recherche d'information sur les CVE trouvées",
       nameShort: "metasploit",
     },
   ];
