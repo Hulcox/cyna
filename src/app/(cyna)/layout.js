@@ -15,7 +15,7 @@ const layoutCyna = ({ children }) => {
           </label>
           <Link href="/" className="flex items-center btn btn-ghost">
             <Image
-              src="/images/baby-yoda.png"
+              src="/images/baby_yoda.png"
               alt="logo cyna"
               width={45}
               height={45}

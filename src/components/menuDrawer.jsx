@@ -25,7 +25,7 @@ const MenuDrawer = () => {
         <h2 className="menu-title text-lg">
           <div className="flex gap-2">
             <Image
-              src="/images/green_laser.png"
+              src="/images/amber_laser.png"
               alt="laser saber"
               width={80}
               height={45}

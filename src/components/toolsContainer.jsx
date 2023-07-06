@@ -4,6 +4,7 @@ import Table from "@/components/table"
 import AppContext from "./appContext"
 import { request } from "./tools/requester/requestHandler"
 import { Formik, Form, Field } from "formik"
+import { bool } from "yup"
 
 const ToolsContainer = ({ title, scriptName }) => {
   const [data, setData] = useState(null)
@@ -12,7 +13,7 @@ const ToolsContainer = ({ title, scriptName }) => {
   const [isAnyRunning, setIsAnyRunning] = useState(false)
 
   useEffect(() => {
-    const isAnyRunning = Object.values(scriptIsBusy).filter(script => script.status === "running")
+    const isAnyRunning = Object.values(scriptIsBusy).filter(script => script.status === "running").length > 0
     setIsAnyRunning(isAnyRunning)
   }, [scriptIsBusy])
 
@@ -113,12 +114,12 @@ const ToolsContainer = ({ title, scriptName }) => {
                 <Field
                   name="command"
                   placeholder="Commande"
-                  className="input w-1/3 border-[#45781e]"
+                  className="input w-1/3 border-orange-400"
                 />
                 <Field
                   name="params"
                   placeholder="Paramètres"
-                  className="input w-1/3 border-[#45781e]"
+                  className="input w-1/3 border-orange-400"
                 />
               </div>
               <button
