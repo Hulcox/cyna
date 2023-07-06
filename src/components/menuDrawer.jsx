@@ -1,10 +1,10 @@
-"use client"
-import Image from "next/image"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+"use client";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const MenuDrawer = () => {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   const tools = [
     {
@@ -14,7 +14,7 @@ const MenuDrawer = () => {
     },
     {
       name: "Simulation de brèche",
-      url: "https://localhost:5000",
+      url: "/tools/infectionmonkey",
       type: "simulation",
     },
     {
@@ -83,7 +83,7 @@ const MenuDrawer = () => {
         </ul>
       </li>
     </ul>
-  )
-}
+  );
+};
 
-export default MenuDrawer
+export default MenuDrawer;
