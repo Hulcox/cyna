@@ -22,6 +22,7 @@ export class FetchClient {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://172.16.206.25:9999",
         ...options.headers,
       },
     });
@@ -34,6 +35,7 @@ export class FetchClient {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         ...options.headers,
       },
     });
@@ -46,6 +48,7 @@ export class FetchClient {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         ...options.headers,
       },
     });

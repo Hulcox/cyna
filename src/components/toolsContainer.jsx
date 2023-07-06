@@ -2,7 +2,6 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import Table from "@/components/table";
 import AppContext from "./appContext";
-import { request } from "./tools/requester/requestHandler";
 import { Formik, Form, Field } from "formik";
 
 const ToolsContainer = ({ title, scriptName }) => {
@@ -26,12 +25,12 @@ const ToolsContainer = ({ title, scriptName }) => {
 
   const handleStartScript = useCallback(() => {
     handleSetScriptIsBusy(scriptName);
-    request
-      .post("/run", { container: scriptName, command: "", params: "" })
-      .then((res) => {})
-      .catch((err) => {
-        console.log(err);
-      });
+    // request
+    //   .post("/run", { container: scriptName, command: "", params: "" })
+    //   .then((res) => {})
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   }, [handleSetScriptIsBusy, scriptName]);
 
   useEffect(() => {

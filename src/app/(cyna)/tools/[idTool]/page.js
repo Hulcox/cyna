@@ -6,7 +6,7 @@ const ToolPage = ({ params }) => {
   const tools = [
     {
       name: "Open VAS - Scan de vulnérabilité",
-      nameShort: "openVas",
+      nameShort: "openvas",
     },
     {
       name: "Infection Monkey - BAS",

@@ -7,7 +7,7 @@ const MenuDrawer = () => {
   const pathname = usePathname();
 
   const tools = [
-    { name: "Open VAS - Scan de vulnérabilité", url: "openVas" },
+    { name: "Open VAS - Scan de vulnérabilité", url: "openvas" },
     { name: "Infection Monkey - BAS", url: "infectionMonkey" },
   ];
 
