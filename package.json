@@ -22,7 +22,6 @@
     "react": "18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "18.2.0",
-    "require-dir-all": "^0.4.15",
     "tailwindcss": "3.3.2",
     "yup": "^1.2.0"
   }
