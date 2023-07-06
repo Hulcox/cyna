@@ -5,7 +5,7 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Cyna Box",
+  title: "Cyna Box Mirador",
 };
 
 export default function RootLayout({ children }) {
