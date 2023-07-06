@@ -12,6 +12,10 @@ const ToolPage = ({ params }) => {
       name: "Infection Monkey - BAS",
       nameShort: "infectionMonkey",
     },
+    {
+      name: "Metasploit",
+      nameShort: "metasploit",
+    },
   ];
 
   return (

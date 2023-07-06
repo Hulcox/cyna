@@ -9,6 +9,10 @@ const MenuDrawer = () => {
   const tools = [
     { name: "Open VAS - Scan de vulnérabilité", url: "openvas" },
     { name: "Infection Monkey - BAS", url: "infectionMonkey" },
+    {
+      name: "Metasploit",
+      url: "metasploit",
+    },
   ];
 
   return (

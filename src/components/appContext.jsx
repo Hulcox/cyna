@@ -21,6 +21,13 @@ export const AppContextProvider = (props) => {
         .setLocale("fr")
         .toLocaleString(DateTime.DATETIME_SHORT),
     },
+    metasploit: {
+      name: "metasploit",
+      status: "down",
+      date: DateTime.now()
+        .setLocale("fr")
+        .toLocaleString(DateTime.DATETIME_SHORT),
+    },
   });
 
   useEffect(() => {
