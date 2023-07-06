@@ -27,10 +27,6 @@ yarn-error.log*
 # local env files
 .env
 
-# docs & stats (dynamic files)
-/public/docs/*
-/public/stats/*
-
 # jetbrains users
 .idea
 
