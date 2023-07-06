@@ -2,12 +2,21 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import Table from "@/components/table";
 import AppContext from "./appContext";
+import { request } from "./tools/requester/requestHandler";
 import { Formik, Form, Field } from "formik";
 
 const ToolsContainer = ({ title, scriptName }) => {
-  const [stringIsRunning, setStringIsRunning] = useState("");
   const [data, setData] = useState(null);
+  const [stringIsRunning, setStringIsRunning] = useState("");
   const { scriptIsBusy, handleSetScriptIsBusy } = useContext(AppContext);
+  const [isAnyRunning, setIsAnyRunning] = useState(false);
+
+  useEffect(() => {
+    const isAnyRunning = Object.values(scriptIsBusy).filter(
+      (script) => script.status === "running"
+    );
+    setIsAnyRunning(isAnyRunning);
+  }, [scriptIsBusy]);
 
   const columns = [
     "IP",
@@ -23,18 +32,24 @@ const ToolsContainer = ({ title, scriptName }) => {
   //   params: Yup.string().required("Des paramètres sont requis !"),
   // });
 
-  const handleStartScript = useCallback(() => {
-    handleSetScriptIsBusy(scriptName);
-    // request
-    //   .post("/run", { container: scriptName, command: "", params: "" })
-    //   .then((res) => {})
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-  }, [handleSetScriptIsBusy, scriptName]);
+  const handleStartScript = useCallback(
+    async (value) => {
+      console.log(value);
+      handleSetScriptIsBusy(scriptName);
+
+      const run = await request.post("/run", {
+        container: scriptName,
+        command: "",
+        params: "",
+      });
+
+      console.log(run);
+    },
+    [handleSetScriptIsBusy, scriptName]
+  );
 
   useEffect(() => {
-    if (scriptIsBusy[scriptName].status == "running") {
+    if (scriptIsBusy[scriptName].status === "running") {
       let string = "";
       const updateString = () => {
         if (string.length === 3) {
@@ -80,12 +95,12 @@ const ToolsContainer = ({ title, scriptName }) => {
         <pre data-prefix=">">
           <code>Exécution du script : </code>
         </pre>
-        {scriptIsBusy[scriptName].status == "running" && (
+        {scriptIsBusy[scriptName].status === "running" && (
           <pre data-prefix=">" className="text-warning">
             <code>{`En cours d'exécution ${stringIsRunning}`}</code>
           </pre>
         )}
-        {scriptIsBusy[scriptName].status == "done" && (
+        {scriptIsBusy[scriptName].status === "done" && (
           <pre data-prefix=">" className="text-success">
             <code>Fait ! le {scriptIsBusy[scriptName].date}</code>
           </pre>
@@ -116,7 +131,7 @@ const ToolsContainer = ({ title, scriptName }) => {
               <button
                 type="submit"
                 className="btn bg-[#45781e] w-42 self-end text-white"
-                disabled={scriptIsBusy[scriptName].status == "running"}
+                disabled={isAnyRunning}
               >
                 Lancer le test
               </button>

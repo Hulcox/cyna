@@ -36,14 +36,14 @@ export const AppContextProvider = (props) => {
   useEffect(() => {
     const updateRequest = () => {
       Object.values(scriptIsBusy)
-        .filter(({ status }) => status == "running")
+        .filter(({ status }) => status === "running")
         .map(({ name }) => {
           request
             .post("/alive", {
               container: name,
             })
             .then((res) => {
-              if (res.data != "up") {
+              if (res.data !== "up") {
                 handleSetScriptIsDone(name);
               }
             })
