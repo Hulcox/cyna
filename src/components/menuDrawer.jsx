@@ -7,10 +7,22 @@ const MenuDrawer = () => {
   const pathname = usePathname()
 
   const tools = [
-    { name: "Open VAS", url: "openvas" },
-    { name: "Infection Monkey", url: "infectionmonkey" },
-    { name: "Metasploit", url: "metasploit" }
-  ]
+    {
+      name: "Scan de vulnérabilité",
+      url: "/tools/openvas",
+      type: "reconnaissance",
+    },
+    {
+      name: "Simulation de brèche",
+      url: "https://localhost:5000",
+      type: "simulation",
+    },
+    {
+      name: "Vunérabilité",
+      url: "/tools/metasploit",
+      type: "reconnaissance",
+    },
+  ];
 
   return (
     <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
@@ -31,22 +43,43 @@ const MenuDrawer = () => {
               width={80}
               height={45}
             />
-            <div>{"Outils d'attaque"}</div>
+            <div>{"Reconnaissance"}</div>
           </div>
         </h2>
         <ul>
-          {tools.map(({ name, url }, key) => (
-            <li key={key} className="my-4">
-              <Link
-                className={`text-md font-bold ${
-                  pathname === `/tools/${url}` ? "active" : null
-                }`}
-                href={`/tools/${url}`}
-              >
-                {name}
-              </Link>
-            </li>
-          ))}
+          {tools
+            .filter((elm) => elm.type === "reconnaissance")
+            .map(({ name, url }, key) => (
+              <li key={key} className="my-4">
+                <Link className={`text-md font-bold`} href={url}>
+                  {name}
+                </Link>
+              </li>
+            ))}
+        </ul>
+      </li>
+      <li>
+        <h2 className="menu-title text-lg">
+          <div className="flex gap-2">
+            <Image
+              src="/images/amber_laser.png"
+              alt="laser saber"
+              width={80}
+              height={45}
+            />
+            <div>{"Simulation Ransomware"}</div>
+          </div>
+        </h2>
+        <ul>
+          {tools
+            .filter((elm) => elm.type === "simulation")
+            .map(({ name, url }, key) => (
+              <li key={key} className="my-4">
+                <Link className={`text-md font-bold`} href={url}>
+                  {name}
+                </Link>
+              </li>
+            ))}
         </ul>
       </li>
     </ul>
