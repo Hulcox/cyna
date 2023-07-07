@@ -9,22 +9,13 @@ const MenuDrawer = () => {
   const tools = [
     {
       name: "Scan de vulnérabilité",
-      url: "/tools/scan"
+      url: "/tools/openvas"
     }
-    // {
-    //   name: "Simulation de brèche",
-    //   url: "/tools/infectionmonkey",
-    // },
-    // {
-    //   name: "Exploitation de Vunérabilité",
-    //   url: "/tools/metasploit"
-    // }
   ]
 
   const results = [
     { name: "Statistiques", url: "/" },
     { name: "Gestion des risques cyber", url: "/gestion" }
-    // { name: "Recommandations", url: "/recommandation" }
   ]
 
   return (

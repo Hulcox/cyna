@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react"
 import BarChart from "@/components/barChart"
 import NoData from "@/components/noData"
+import CyberScore from "@/components/cyberScore"
 
 export default function Home() {
   const [data, setData] = useState([])
@@ -29,12 +30,15 @@ export default function Home() {
   return (
     <div className="p-10 w-3/4">
       {data && data.map((info, index) => (
-        <>
-          <h1 className="font-bold uppercase text-xl">
-            Nos données actuelles
-          </h1>
-          <BarChart key={index} info={info}/>
-        </>
+        <div className="flex flex-col gap-10" key={index} >
+          <div className="flex flex-col gap-5">
+            <h1 className="font-bold uppercase text-xl">
+              Nos données actuelles
+            </h1>
+            <CyberScore cyberScore={"D"} />
+          </div>
+          <BarChart info={info}/>
+        </div>
       ))}
       {data.length === 0 && <NoData/>}
     </div>

@@ -24,7 +24,6 @@ const ToolsContainer = ({ title, scriptName }) => {
     "CVEs",
     "CVSS",
     "Severity",
-    "Cyberscore",
     "Specific Result"
   ]
 

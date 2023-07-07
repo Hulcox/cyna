@@ -318,53 +318,5 @@
     "CVSS": 3.5,
     "Severity": "Info",
     "Specific Result": "Version of installed component:           22.4.1 (Installed component: openvas-libraries on OpenVAS <= 9, openvas-scanner on Greenbone Community Edition >= 10)\nLatest available openvas-scanner version: 22.7.2\nReference URL(s) for the latest available version: https:\/\/forum.greenbone.net\/t\/greenbone-community-edition-22-4-stable-initial-release-2022-07-25\/12638\n"
-  },
-  {
-    "IP": "84.55.180.141",
-    "Hostname": null,
-    "CVEs": "CVE-2023-9012",
-    "CVSS": 7.5,
-    "Severity": "High",
-    "Specific Result": "Version of installed component:           22.4.1 (Installed component: openvas-libraries on OpenVAS <= 9, openvas-scanner on Greenbone Community Edition >= 10)\nLatest available openvas-scanner version: 22.7.2\nReference URL(s) for the latest available version: https:\/\/forum.greenbone.net\/t\/greenbone-community-edition-22-4-stable-initial-release-2022-07-25\/12638\n"
-  },
-  {
-    "IP": "84.55.180.141",
-    "Hostname": null,
-    "CVEs": "CVE-2021-1234",
-    "CVSS": 6.2,
-    "Severity": "Medium",
-    "Specific Result": "It was detected that the host implements RFC1323\/RFC7323.\n\nThe following timestamps were retrieved with a delay of 1 seconds in-between:\nPacket 1: 596469531\nPacket 2: 596469639\n"
-  },
-  {
-    "IP": "84.55.180.141",
-    "Hostname": null,
-    "CVEs": "CVE-2021-1234",
-    "CVSS": 6.5,
-    "Severity": "Medium",
-    "Specific Result": "Version of installed component:           22.4.1 (Installed component: openvas-libraries on OpenVAS <= 9, openvas-scanner on Greenbone Community Edition >= 10)\nLatest available openvas-scanner version: 22.7.2\nReference URL(s) for the latest available version: https:\/\/forum.greenbone.net\/t\/greenbone-community-edition-22-4-stable-initial-release-2022-07-25\/12638\n"
-  },
-  {
-    "IP": "84.55.180.141",
-    "Hostname": null,
-    "CVEs": "CVE-2023-9012",
-    "CVSS": 3.2,
-    "Severity": "Info",
-    "Specific Result": "The following response \/ ICMP packet has been received:\n- ICMP Type: 14\n- ICMP Code: 0\n"
-  },
-  {
-    "IP": "84.55.180.141",
-    "Hostname": null,
-    "CVEs": "CVE-2022-5678",
-    "CVSS": 4.4,
-    "Severity": "Medium",
-    "Specific Result": "It was detected that the host implements RFC1323\/RFC7323.\n\nThe following timestamps were retrieved with a delay of 1 seconds in-between:\nPacket 1: 596469531\nPacket 2: 596469639\n"
-  },
-  {
-    "IP": "84.55.180.141",
-    "Hostname": null,
-    "CVEs": "CVE-2021-1234",
-    "CVSS": 5.6,
-    "Severity": "Medium",
-    "Specific Result": "Version of installed component:           22.4.1 (Installed component: openvas-libraries on OpenVAS <= 9, openvas-scanner on Greenbone Community Edition >= 10)\nLatest available openvas-scanner version: 22.7.2\nReference URL(s) for the latest available version: https:\/\/forum.greenbone.net\/t\/greenbone-community-edition-22-4-stable-initial-release-2022-07-25\/12638\n"
   }
 ]

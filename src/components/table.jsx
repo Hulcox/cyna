@@ -5,7 +5,7 @@ const Table = (props) => {
   const { columns, data } = props
 
   const [rows, setRows] = useState(data)
-  const [sort, setSort] = useState({CVEs: true})
+  const [sort, setSort] = useState({ CVEs: true })
 
   const color = {
     Critical: "bg-red-600",
@@ -23,9 +23,9 @@ const Table = (props) => {
           } else {
             return a[column] < b[column] ? 1 : -1
           }
-      })
+        })
       setRows(sorted)
-      setSort({[column]: !sort[column]})
+      setSort({ [column]: !sort[column] })
     }
   }
 

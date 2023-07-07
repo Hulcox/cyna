@@ -7,8 +7,8 @@ const AppContext = createContext({})
 
 export const AppContextProvider = (props) => {
   const [scriptIsBusy, setScriptIsBusy] = useState({
-    scan: {
-      name: "scan",
+    openvas: {
+      name: "openvas",
       status: "down",
       date: DateTime.now()
         .setLocale("fr")
