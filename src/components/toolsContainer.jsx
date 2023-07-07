@@ -5,7 +5,7 @@ import AppContext from "./appContext"
 import { Formik, Form, Field } from "formik"
 
 const ToolsContainer = ({ title, scriptName }) => {
-  const [data, setData] = useState(null)
+  const [data, setData] = useState([])
   const [stringIsRunning, setStringIsRunning] = useState("")
   const { scriptIsBusy, handleSetScriptIsBusy, handleSetScriptIsDone } =
     useContext(AppContext)
