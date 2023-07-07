@@ -3,7 +3,6 @@ import { useCallback, useContext, useEffect, useState } from "react"
 import Table from "@/components/table"
 import AppContext from "./appContext"
 import { Formik, Form, Field } from "formik"
-import Link from "next/link"
 
 const ToolsContainer = ({ title, scriptName }) => {
   const [data, setData] = useState(null)
@@ -112,19 +111,6 @@ const ToolsContainer = ({ title, scriptName }) => {
             <code>Fait ! le {scriptIsBusy[scriptName].date}</code>
           </pre>
         )}
-        {scriptName === "infectionmonkey" &&
-          scriptIsBusy[scriptName].status === "done" && (
-            <pre data-prefix=">" className="text-info">
-              <code>
-                <Link
-                  href={"https://localhost:5000"}
-                  className="link link-info"
-                >
-                  Accéder au simulateur de brèche
-                </Link>
-              </code>
-            </pre>
-          )}
       </div>
       <div className="flex gap-2 justify-end">
         <Formik
@@ -139,12 +125,12 @@ const ToolsContainer = ({ title, scriptName }) => {
               <div className="flex gap-5 justify-start">
                 <Field
                   name="command"
-                  placeholder="Commande"
+                  placeholder="Nom du container"
                   className="input w-1/3 border-orange-400"
                 />
                 <Field
                   name="params"
-                  placeholder="Paramètres"
+                  placeholder="Paramètres de la commande"
                   className="input w-1/3 border-orange-400"
                 />
               </div>
@@ -159,7 +145,7 @@ const ToolsContainer = ({ title, scriptName }) => {
           )}
         </Formik>
       </div>
-      {data && <Table columns={columns} data={data}/>}
+      {scriptIsBusy[scriptName].status === "done" && <Table columns={columns} data={data}/>}
     </div>
   )
 }

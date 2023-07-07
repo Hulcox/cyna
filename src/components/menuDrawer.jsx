@@ -9,7 +9,7 @@ const MenuDrawer = () => {
   const tools = [
     {
       name: "Scan de vulnérabilité",
-      url: "/tools/openvas"
+      url: "/tools/scan"
     }
     // {
     //   name: "Simulation de brèche",

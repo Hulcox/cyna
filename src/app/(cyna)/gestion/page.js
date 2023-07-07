@@ -39,7 +39,7 @@ const dataInit = [
     cvss: 5,
     severity: "general",
     cyberscore: null
-  },
+  }
 ]
 
 const PageSchema = () => {

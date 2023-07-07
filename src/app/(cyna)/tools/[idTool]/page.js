@@ -6,16 +6,12 @@ const ToolPage = ({ params }) => {
   const tools = [
     {
       name: "Scan de vulnérabilité",
-      nameShort: "openvas"
+      nameShort: "scan"
     },
-    {
-      name: "Simulation de brèche",
-      nameShort: "infectionmonkey"
-    },
-    {
+    /*{
       name: "Vunérabilité - Recherche d'information sur les CVE",
       nameShort: "metasploit"
-    }
+    }*/
   ]
 
   return (

@@ -7,27 +7,13 @@ const AppContext = createContext({})
 
 export const AppContextProvider = (props) => {
   const [scriptIsBusy, setScriptIsBusy] = useState({
-    openvas: {
-      name: "openvas",
+    scan: {
+      name: "scan",
       status: "down",
       date: DateTime.now()
         .setLocale("fr")
         .toLocaleString(DateTime.DATETIME_SHORT)
     },
-    infectionmonkey: {
-      name: "infectionmonkey",
-      status: "down",
-      date: DateTime.now()
-        .setLocale("fr")
-        .toLocaleString(DateTime.DATETIME_SHORT)
-    },
-    metasploit: {
-      name: "metasploit",
-      status: "down",
-      date: DateTime.now()
-        .setLocale("fr")
-        .toLocaleString(DateTime.DATETIME_SHORT)
-    }
   })
 
   useEffect(() => {

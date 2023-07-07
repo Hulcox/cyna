@@ -1,0 +1,72 @@
+{
+  "data": [
+    {
+      "ip": "172.16.206.24",
+      "cve": [
+        {
+          "id": "CVE-1999-0524",
+          "cvss": 2.5,
+          "severity": "high",
+          "cyberscore": null
+        },
+        {
+          "id": "CVE-2020-1234",
+          "cvss": 7.8,
+          "severity": "critical",
+          "cyberscore": null
+        }
+      ]
+    },
+    {
+      "ip": "172.16.206.28",
+      "cve": [
+        {
+          "id": "CVE-1999-0525",
+          "cvss": 5,
+          "severity": "general",
+          "cyberscore": null
+        },
+        {
+          "id": "CVE-2021-5678",
+          "cvss": 9.3,
+          "severity": "critical",
+          "cyberscore": null
+        }
+      ]
+    },
+    {
+      "ip": "192.168.0.10",
+      "cve": [
+        {
+          "id": "CVE-2021-3456",
+          "cvss": 7.8,
+          "severity": "critical",
+          "cyberscore": null
+        },
+        {
+          "id": "CVE-2022-9876",
+          "cvss": 6.2,
+          "severity": "high",
+          "cyberscore": null
+        }
+      ]
+    },
+    {
+      "ip": "10.0.0.5",
+      "cve": [
+        {
+          "id": "CVE-2022-5678",
+          "cvss": 9.3,
+          "severity": "critical",
+          "cyberscore": null
+        },
+        {
+          "id": "CVE-2023-9999",
+          "cvss": 8.5,
+          "severity": "high",
+          "cyberscore": null
+        }
+      ]
+    }
+  ]
+}
