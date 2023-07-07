@@ -33,12 +33,11 @@ const ToolsContainer = ({ title, scriptName }) => {
 
       setTimeout(() => {
         handleSetScriptIsDone(scriptName);
+        //fetchData(value);
       }, 10000);
-
-      fetchData(value);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [scriptIsBusy]
   );
 
   const fetchData = (value) => {
