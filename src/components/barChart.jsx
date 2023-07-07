@@ -25,12 +25,18 @@ ChartJS.register(
 const BarChart = (props) => {
   const { info } = props
 
-  console.log(info)
-
   const data = {
     labels: info.labels,
-    datasets: info.datasets
+    datasets: [
+      {
+        label: info.datasets[0].label,
+        backgroundColor: info.datasets[0].backgroundColor,
+        borderColor: info.datasets[0].borderColor,
+        data: info.datasets[0].data.map((array) => array.length)
+      }
+    ]
   }
+
   const options = {
     responsive: true,
     maintainAspectRatio: true,

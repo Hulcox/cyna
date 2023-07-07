@@ -23,7 +23,7 @@ const MenuDrawer = () => {
 
   const results = [
     { name: "Statistiques", url: "/" },
-    { name: "Schéma des risques cyber", url: "/schema" }
+    { name: "Gestion des risques cyber", url: "/gestion" }
     // { name: "Recommandations", url: "/recommandation" }
   ]
 
