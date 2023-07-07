@@ -3,7 +3,7 @@
     "IP": "192.168.1.101",
     "Hostname": null,
     "CVEs": "CVE-1999-0524",
-    "CVSS": 2.5,
+    "CVSS": 7,
     "Severity": "High",
     "Specific Result": "It was detected that the host implements RFC1323\/RFC7323.\n\nThe following timestamps were retrieved with a delay of 1 seconds in-between:\nPacket 1: 596469531\nPacket 2: 596469639\n"
   },
@@ -11,8 +11,8 @@
     "IP": "192.168.101",
     "Hostname": null,
     "CVEs": "CVE-1999-0525",
-    "CVSS": 2.5,
-    "Severity": "High",
+    "CVSS": 10,
+    "Severity": "Critical",
     "Specific Result": "Version of installed component:           22.4.1 (Installed component: openvas-libraries on OpenVAS <= 9, openvas-scanner on Greenbone Community Edition >= 10)\nLatest available openvas-scanner version: 22.7.2\nReference URL(s) for the latest available version: https:\/\/forum.greenbone.net\/t\/greenbone-community-edition-22-4-stable-initial-release-2022-07-25\/12638\n"
   },
   {
@@ -20,7 +20,7 @@
     "Hostname": null,
     "CVEs": "CVE-1999-0526",
     "CVSS": 2.5,
-    "Severity": "High",
+    "Severity": "Info",
     "Specific Result": "It was detected that the host implements RFC1323\/RFC7323.\n\nThe following timestamps were retrieved with a delay of 1 seconds in-between:\nPacket 1: 596469531\nPacket 2: 596469639\n"
   },
   {

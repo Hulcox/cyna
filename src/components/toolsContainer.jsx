@@ -129,7 +129,7 @@ const ToolsContainer = ({ title, scriptName }) => {
               <div className="flex gap-5 justify-start">
                 <Field
                   name="command"
-                  placeholder="Nom du container"
+                  placeholder="Nom de l'utilitaire"
                   className="input w-1/3 border-orange-400"
                 />
                 <Field

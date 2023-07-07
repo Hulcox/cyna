@@ -8,37 +8,32 @@ const dataInit = [
   {
     ip: "192.168.1.101",
     cve: "CVE-1999-0524",
-    cvss: 2.5,
+    cvss: 2,
     severity: "high",
-    cyberscore: null
   },
   {
     ip: "192.168.1.101",
     cve: "CVE-1999-0525",
-    cvss: 2.5,
+    cvss: 10,
     severity: "high",
-    cyberscore: null
   },
   {
     ip: "192.168.1.101",
     cve: "CVE-1999-0526",
     cvss: 2.5,
-    severity: "high",
-    cyberscore: null
+    severity: "low",
   },
   {
     ip: "84.55.180.141",
     cve: "CVE-1999-0524",
     cvss: 5,
     severity: "general",
-    cyberscore: null
   },
   {
     ip: "84.55.180.141",
     cve: "CVE-1999-0525",
     cvss: 5,
     severity: "general",
-    cyberscore: null
   }
 ]
 
@@ -183,7 +178,7 @@ const PageSchema = () => {
       <div className="flex flex-col items-center">
         <input
           type="text"
-          placeholder="Addresse Ip"
+          placeholder="Adresse ip"
           className="input border-orange-400 w-full max-w-xs my-5"
           value={ipSelected}
           onChange={handleInputIp}
