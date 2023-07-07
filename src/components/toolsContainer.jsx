@@ -34,7 +34,6 @@ const ToolsContainer = ({ title, scriptName }) => {
 
   const handleStartScript = useCallback(
     async (value) => {
-      console.log(value)
       handleSetScriptIsBusy(scriptName)
 
       const run = await request.post("/run", {
