@@ -37,16 +37,15 @@ const ToolsContainer = ({ title, scriptName }) => {
       console.log(value)
       handleSetScriptIsBusy(scriptName)
 
-      // const run = await request.post("/run", {
-      //   container: scriptName,
-      //   command: value.command,
-      //   params: value.params,
-      // });
+      const run = await request.post("/run", {
+        container: scriptName,
+        command: value.command,
+        params: value.params
+      })
 
       setTimeout(() => {
         handleSetScriptIsDone(scriptName)
-      }, 5000)
-
+      }, 10000)
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
@@ -144,7 +143,9 @@ const ToolsContainer = ({ title, scriptName }) => {
           )}
         </Formik>
       </div>
-      {scriptIsBusy[scriptName].status === "done" && <Table columns={columns} data={data}/>}
+      {scriptIsBusy[scriptName].status === "done" && (
+        <Table columns={columns} data={data}/>
+      )}
     </div>
   )
 }
