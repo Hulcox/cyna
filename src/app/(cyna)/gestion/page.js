@@ -3,7 +3,6 @@
 import classNames from "classnames"
 import Image from "next/image"
 import { useEffect, useState } from "react"
-import { object } from "yup"
 
 const dataInit = [
   {
@@ -41,13 +40,6 @@ const dataInit = [
     severity: "general",
     cyberscore: null
   },
-  {
-    ip: "172.16.206.25",
-    cve: "CVE-1999-0530",
-    cvss: 7.5,
-    severity: "low",
-    cyberscore: null
-  }
 ]
 
 const PageSchema = () => {
